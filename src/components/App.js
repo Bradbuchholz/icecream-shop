@@ -1,12 +1,12 @@
 import React from "react";
 import Header from "./Header";
-import PintControl from "./PintControl";
+import IceCreamControl from "./IceCreamControl";
 
 function App() {
   return (
     <React.Fragment>
       <Header />
-      <PintControl />
+      <IceCreamControl />
     </React.Fragment>
   );
 }
