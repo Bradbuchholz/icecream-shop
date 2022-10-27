@@ -78,6 +78,46 @@ class IceCreamControl extends React.Component {
       this.setState({
         inventoryListArray: newInventoryListArry
       });
+    } else {
+      console.log("No more ice cream!");
     }
   }
+
+  render() {
+    let visibleState = null;
+    let buttonText = null;
+
+    if (this.state.editing) {
+      visibleState = <EditIceCreamForm
+      item = {this.state.selectedItem}
+      onEditItem = {this.handleEditingItem} />
+      buttonText = "Back to Inventory";
+    }
+    else if (this.state.selectedItem != null){
+      visibleState = <ItemDetail 
+      item={this.state.selectedItem}
+      onClickingDelete = {this.handleDeletingItem}
+      onClickingEdit = {this.handleEditClick}/>
+      buttonText = "Back to Inventory";
+    } else if (this.state.formVisable){
+      visibleState = <NewInventoryForm onNewInventoryCreation={this.handleAddingNewInventory} />;
+      buttonText = "Back to Inventory";
+    } else {
+      visibleState = <InventoryList 
+      inentoryList={this.state.inventoryListArray}
+      onItemSelection={this.handleChangingSelectedItem}
+      onSellingScoop={this.handleSellingScoop} />
+      buttonText = "Add Inventory";    
+    }
+
+
+    return (
+      <React.Fragment>
+        {visibleState}
+        <button onClick={this.handleClick}>{buttonText}</button>
+      </React.Fragment>
+    );
+  }
 }
+
+export default IceCreamControl;

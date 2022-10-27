@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Item(props){
+function IceCream(props){
   return (
     <React.Fragment>
-      <div onClick = {()=> props.whenItemClicked(props.id)}>
+      <div onClick = {()=> props.whenIceCreamClicked(props.id)}>
         <h3>{props.name}</h3>
         <p>Flavor: {props.flavor}</p>
         <p>Jugs On Hand: {props.quantity.toFixed(3)}</p>
@@ -28,4 +28,4 @@ Item.propTypes = {
   whenPoundSold: PropTypes.func
 };
 
-export default Item;
+export default IceCream;
