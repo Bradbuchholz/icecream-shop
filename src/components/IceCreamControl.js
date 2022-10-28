@@ -3,8 +3,6 @@ import IceCreamList from './IceCreamList';
 import NewIceCreamForm from './NewIceCreamForm';
 import IceCreamDetail from './IceCreamDetail';
 import EditIceCreamForm from './EditIceCreamForm';
-import { findAllByTestId } from '@testing-library/react';
-
 class IceCreamControl extends React.Component {
 
   constructor(props){
@@ -94,20 +92,20 @@ class IceCreamControl extends React.Component {
       buttonText = "Back to Inventory";
     }
     else if (this.state.selectedItem != null){
-      visibleState = <ItemDetail 
+      visibleState = <IceCreamDetail 
       item={this.state.selectedItem}
       onClickingDelete = {this.handleDeletingItem}
       onClickingEdit = {this.handleEditClick}/>
       buttonText = "Back to Inventory";
     } else if (this.state.formVisable){
-      visibleState = <NewInventoryForm onNewInventoryCreation={this.handleAddingNewInventory} />;
+      visibleState = <NewIceCreamForm onNewInventoryCreation={this.handleAddingNewInventory} />;
       buttonText = "Back to Inventory";
     } else {
-      visibleState = <InventoryList 
+      visibleState = <IceCreamList 
       inentoryList={this.state.inventoryListArray}
       onItemSelection={this.handleChangingSelectedItem}
       onSellingScoop={this.handleSellingScoop} />
-      buttonText = "Add Inventory";    
+      buttonText = "Add IceCream";    
     }
 
 

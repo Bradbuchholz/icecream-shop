@@ -19,7 +19,7 @@ function IceCream(props){
   );
 }
 
-Item.propTypes = {
+IceCream.propTypes = {
   name: PropTypes.string,
   price: PropTypes.number,
   quantity: PropTypes.number,
