@@ -6,15 +6,15 @@ function IceCreamList(props){
   return (
     <React.Fragment>
     <hr/>
-    {props.iceCreamList.map((item) =>
-      <Item 
-      whenItemClicked = { props.onItemSelection }
+    {props.iceCreamList.map((iceCream) =>
+      <IceCream 
+      whenIceCreamClicked = { props.onIceCreamSelection }
       whenScoopSold = { props.onSellingScoop }
-      name={item.name}
-      price={item.price}
-      quantity={item.quantity}
-      id={item.id}
-      key={item.id}/>
+      name={iceCream.name}
+      price={iceCream.price}
+      quantity={iceCream.quantity}
+      id={iceCream.id}
+      key={iceCream.id}/>
     )}
     <br />
     </React.Fragment>
@@ -22,8 +22,8 @@ function IceCreamList(props){
 }
 
 IceCreamList.propTypes = {
-  inventoryList: PropTypes.array,
-  onItemSelection: PropTypes.func,
+  iceCreamList: PropTypes.array,
+  onIceCreamSelection: PropTypes.func,
   onSellingScoop: PropTypes.func
 };
 
