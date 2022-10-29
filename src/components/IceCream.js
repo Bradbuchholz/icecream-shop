@@ -19,8 +19,8 @@ function IceCream(props) {
       <p>Flavor: {props.flavor}</p>
       <p>Price: ${props.price}</p>
       <p>Scoops: {props.scoops} Remaining</p>
-      <Button className="me-2" onClick = {() => props.whenScoopClicked(props.id)}>Keg Details</Button>
-      <Button variant="success" className="me-2" onClick = {() => props.whenDecrementingScoopClicked(props.id)}>Sell Pint</Button>
+      <Button className="me-2" onClick = {() => props.whenScoopClicked(props.id)}>IceCream Details</Button>
+      <Button variant="success" className="me-2" onClick = {() => props.whenDecrementingScoopClicked(props.id)}>Sell Scoop</Button>
       <hr />
     </React.Fragment>
   );
