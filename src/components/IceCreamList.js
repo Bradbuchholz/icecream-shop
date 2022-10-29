@@ -15,7 +15,7 @@ function IceCreamList(props) {
       {props.iceCreamList.map((iceCream) => 
         <IceCream
           whenScoopClicked={props.onIceCreamDetailsSelection}
-          whenDecrementingPintsClicked={props.onDecrementingScoops}
+          whenDecrementingScoopsClicked={props.onDecrementingScoops}
           name={iceCream.name}
           brand={iceCream.brand}
           price={iceCream.price}

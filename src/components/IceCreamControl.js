@@ -2,117 +2,79 @@ import React from 'react';
 import IceCreamList from './IceCreamList';
 import NewIceCreamForm from './NewIceCreamForm';
 import IceCreamDetail from './IceCreamDetail';
-import EditIceCreamForm from './EditIceCreamForm';
-class IceCreamControl extends React.Component {
 
-  constructor(props){
+class IceCreamControl extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {
-      formVisable: false,
-      inventoryListArray: [],
-      selectedItem: null,
-      editing: false
-    };
+      mainIceCreamList: [],
+      formVisible: false,
+      selectedIceCream: null
+    }
   }
 
   handleClick = () => {
-    if (this.state.selectedItem != null)
-    {
+    if (this.state.selectedIceCream != null) {
       this.setState({
-        formVisable: false,
-        selectedItem: null,
-        editing: false
+        formVisible: false,
+        selectedIceCream: null
       });
-    }
-    else
-    {
+    } else {
       this.setState(prevState => ({
-        formVisable: !prevState.formVisable,
+        formVisible: !prevState.formVisible
       }));
     }
   }
 
-  handleAddingNewInventory = (newItem) => {
-    const newInventoryListArry = this.state.inventoryListArray.concat(newItem);
+  handleAddingIceCreamToList = newKeg => {
+    const newMainIceCreamList = this.state.mainIceCreamList.concat(newIceCream);
     this.setState({
-      inventoryListArray: newInventoryListArry,
-      formVisable: false
+      mainIceCreamList: newMainIceCreamList,
+      formVisible: false
     });
   }
 
-  handleChangingSelectedItem = (id) => {
-    const selectedItem = this.state.inventoryListArray.filter(item => item.id === id)[0];
-    this.setState({selectedItem: selectedItem});
-  }
-
-  handleDeletingItem = (id) => {
-    const newInventoryListArry = this.state.inventoryListArray.filter(item => item.id !== id);
+  handleChangingSelectedIceCream = iceCreamId => {
+    const selectedIceCream = this.state.mainIceCreamList.filter(iceCream => iceCream.id === iceCreamId )[0];
     this.setState({
-      inventoryListArray: newInventoryListArry,
-      selectedItem: null
+      selectedIceCream: selectedIceCream
     });
   }
 
-  handleEditClick = () => {
-    this.setState({editing: true});
-  }
-
-  handleEditingItem = (itemToEdit) => {
-    const editedInventoryListArry = this.state.inventoryListArray.filter(item => item.id !== this.state.selectedItem.id).concat(itemToEdit);
-    this.setState({
-      inventoryListArray: editedInventoryListArry,
-      editing: false,
-      selectedItem: null
+  handleDecrementingScoopsSold = iceCreamId => {
+    const newMainIceCreamList = this.state.mainIceCreamList.map((element) => {
+      if (element.id === iceCreamId && element.scoops >= 1) {
+        const iceCream = {...element, scoops: element.scoops - 1}
+        return iceCream;
+      } 
+      return element;
     });
-  }
-
-  handleSellingScoop = (id) => {
-    const selectedItem = this.state.inventoryListArray.filter(item => item.id === id)[0];
-    if (selectedItem.quantity >= 0.02)
-    {
-      const newQuantity = selectedItem.quantity - (1/130)
-      const modifiedItem = {selectedItem, quantity: newQuantity}
-      const newInventoryListArry = this.state.inventoryListArray.filter(item => item.id !== id).concat(modifiedItem);
-      this.setState({
-        inventoryListArray: newInventoryListArry
-      });
-    } else {
-      console.log("No more ice cream!");
-    }
+    this.setState({
+      mainIceCreamList: newMainIceCreamList
+    });
   }
 
   render() {
-    let visibleState = null;
+    let currentlyVisibleState = null;
     let buttonText = null;
 
-    if (this.state.editing) {
-      visibleState = <EditIceCreamForm
-      item = {this.state.selectedItem}
-      onEditItem = {this.handleEditingItem} />
-      buttonText = "Back to Inventory";
-    }
-    else if (this.state.selectedItem != null){
-      visibleState = <IceCreamDetail 
-      item={this.state.selectedItem}
-      onClickingDelete = {this.handleDeletingItem}
-      onClickingEdit = {this.handleEditClick}/>
-      buttonText = "Back to Inventory";
-    } else if (this.state.formVisable){
-      visibleState = <NewIceCreamForm onNewInventoryCreation={this.handleAddingNewInventory} />;
-      buttonText = "Back to Inventory";
+    if (this.state.selectedIceCream !== null) {
+      currentlyVisibleState = <IceCreamDetail iceCream={this.state.selectedIceCream} />
+      buttonText="Return to IceCream List";
+    } else if (this.state.formVisible) {
+      currentlyVisibleState = <NewIceCreamForm onNewIceCreamCreation={this.handleAddingNewIceCreamToList} />
+      buttonText="Return to IceCream List";
     } else {
-      visibleState = <IceCreamList 
-      inentoryList={this.state.inventoryListArray}
-      onItemSelection={this.handleChangingSelectedItem}
-      onSellingScoop={this.handleSellingScoop} />
-      buttonText = "Add IceCream";    
+      currentlyVisibleState = <IceCreamList iceCreamList={this.state.mainIceCreamList} onIceCreamDetailsSelection={this.handleChangingSelectedIceCream} onDecrementingScoops={this.handleDecrementingScoopsSold} />
+      buttonText="Add IceCream to Inventory";
     }
-
 
     return (
       <React.Fragment>
-        {visibleState}
-        <button onClick={this.handleClick}>{buttonText}</button>
+  
+          {currentlyVisibleState}
+          <Button onClick={this.handleClick}>{buttonText}</Button>{" "}
+        
       </React.Fragment>
     );
   }
