@@ -3,30 +3,31 @@ import PropTypes from "prop-types";
 import { v4 } from "uuid";
 import ReusableForm from "./ReusableForm";
 
-function NewIceCreamForm(props){
+function NewIceCreamForm(props) {
 
-  function handleNewIceCreamFormSubmission(event){
+  function handleNewIceCreamFormSubmission(event) {
     event.preventDefault();
-    props.onNewInventoryCreation({
+    props.onNewIceCreamCreation({
       name: event.target.name.value,
       flavor: event.target.flavor.value,
-      price: parseFloat(event.target.price.value),
-      quantity: parseFloat(event.target.quantity.value),
+      price: parseInt(event.target.price.value),
+      scoops: Math.floor(parseFloat(event.target.iceCream.value) * 124),
       id: v4()
-    });
+    })
   }
 
   return (
     <React.Fragment>
+      <h3>Add new IceCream to inventory</h3>
       <ReusableForm
         formSubmissionHandler={handleNewIceCreamFormSubmission}
-        buttonText="Add To Inventory" />
+        buttonText="Add IceCream" />
     </React.Fragment>
   );
 }
 
 NewIceCreamForm.propTypes = {
-  onNewInventoryCreation: PropTypes.func
+  onNewKegCreation: PropTypes.func
 };
 
 export default NewIceCreamForm;
