@@ -9,7 +9,7 @@ function NewIceCreamForm(props){
     event.preventDefault();
     props.onNewInventoryCreation({
       name: event.target.name.value,
-      origin: event.target.origin.value,
+      flavor: event.target.flavor.value,
       price: parseFloat(event.target.price.value),
       quantity: parseFloat(event.target.quantity.value),
       id: v4()
