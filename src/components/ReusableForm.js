@@ -5,7 +5,7 @@ function ReusableForm(props) {
   return (
     <React.Fragment>
 
-        <Form onSubmit={props.formSubmissionHandler}>
+        <form onSubmit={props.formSubmissionHandler}>
                 <input
                   type="text"
                   name="name"
@@ -29,7 +29,7 @@ function ReusableForm(props) {
                   step="0.1"
                   min="0.1" />
           <button type="submit">{props.buttonText}</button>
-        </Form>
+        </form>
 
       <hr />
     </React.Fragment>
