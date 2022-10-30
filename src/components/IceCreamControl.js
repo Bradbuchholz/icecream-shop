@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from "@mui/material";
 import IceCreamList from './IceCreamList';
 import NewIceCreamForm from './NewIceCreamForm';
 import IceCreamDetail from './IceCreamDetail';
@@ -60,22 +61,20 @@ class IceCreamControl extends React.Component {
 
     if (this.state.selectedIceCream !== null) {
       currentlyVisibleState = <IceCreamDetail iceCream={this.state.selectedIceCream} />
-      buttonText="Return to IceCream List";
+      buttonText="Return to Ice Cream List";
     } else if (this.state.formVisible) {
       currentlyVisibleState = <NewIceCreamForm onNewIceCreamCreation={this.handleAddingNewIceCreamToList} />
-      buttonText="Return to IceCream List";
+      buttonText="Return to Ice Cream List";
     } else {
       currentlyVisibleState = <IceCreamList iceCreamList={this.state.mainIceCreamList} onIceCreamDetailsSelection={this.handleChangingSelectedIceCream} onDecrementingScoops={this.handleDecrementingScoopsSold} />
-      buttonText="Add IceCream to Inventory";
+      buttonText="Add Ice Cream To Inventory";
     }
 
     return (
-      <React.Fragment>
-  
-          {currentlyVisibleState}
-          <button onClick={this.handleClick}>{buttonText}</button>{" "}
-        
-      </React.Fragment>
+      <>
+        {currentlyVisibleState}
+        <Button variant="contained" onClick={this.handleClick}>{buttonText}</Button>
+      </>
     );
   }
 }

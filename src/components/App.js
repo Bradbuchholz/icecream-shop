@@ -1,14 +1,14 @@
+import { Container } from "@mui/material";
 import React from "react";
 import Header from "./Header";
 import IceCreamControl from "./IceCreamControl";
 
-
 function App() {
   return (
-    <React.Fragment>
+    <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Header />
       <IceCreamControl />
-    </React.Fragment>
+    </Container>
   );
 }
 

@@ -1,9 +1,11 @@
 import React from "react";
-
+import { Typography } from "@mui/material";
 
 function Header() {
   return (
-  <h1>The Scoop Shop</h1>
+    <Typography variant="h1" gutterBottom sx={{ textAlign: 'center' }}>
+      The Scoop Shop
+    </Typography>
   );
 }
 
