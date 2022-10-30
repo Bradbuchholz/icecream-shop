@@ -5,7 +5,7 @@ _By Brad Buchholz_
 _A website to track and manage ice cream for an ice cream shop_
 
 ## Component Diagram
-
+![IcecreamShop](/Users/bradbookpro/Desktop/School-Projects/icecream-shop/IceCreamShop.png)
 ## Technologies Used 
 * HTML
 * React
