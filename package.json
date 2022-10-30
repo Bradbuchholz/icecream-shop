@@ -12,6 +12,10 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "eslint": "^8.26.0",
+    "eslint-plugin-react": "^7.31.10"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -35,9 +39,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "eslint": "^8.26.0",
-    "eslint-plugin-react": "^7.31.10"
   }
 }

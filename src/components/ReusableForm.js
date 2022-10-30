@@ -28,7 +28,7 @@ function ReusableForm(props) {
                   required 
                   step="0.1"
                   min="0.1" />
-          <Button type="submit">{props.buttonText}</Button>
+          <button type="submit">{props.buttonText}</button>
         </Form>
 
       <hr />

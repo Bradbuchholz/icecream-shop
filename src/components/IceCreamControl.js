@@ -73,7 +73,7 @@ class IceCreamControl extends React.Component {
       <React.Fragment>
   
           {currentlyVisibleState}
-          <Button onClick={this.handleClick}>{buttonText}</Button>{" "}
+          <button onClick={this.handleClick}>{buttonText}</button>{" "}
         
       </React.Fragment>
     );
