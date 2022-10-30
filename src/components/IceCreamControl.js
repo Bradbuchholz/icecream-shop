@@ -26,7 +26,7 @@ class IceCreamControl extends React.Component {
     }
   }
 
-  handleAddingIceCreamToList = newKeg => {
+  handleAddingIceCreamToList = newIceCream => {
     const newMainIceCreamList = this.state.mainIceCreamList.concat(newIceCream);
     this.setState({
       mainIceCreamList: newMainIceCreamList,
