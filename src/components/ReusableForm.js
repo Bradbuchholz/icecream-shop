@@ -23,7 +23,7 @@ function ReusableForm(props) {
                   required />
                 <input
                   type="number"
-                  name="jugs"
+                  name="scoops"
                   placeholder="EX: 2"
                   required 
                   step="0.1"
