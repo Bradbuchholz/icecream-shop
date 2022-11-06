@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 import { v4 } from "uuid";
 import ReusableForm from "./ReusableForm";
 
+NewIceCreamForm.propTypes = {
+  onNewIceCreamCreation: PropTypes.func
+};
+
 function NewIceCreamForm(props) {
 
   function handleNewIceCreamFormSubmission(event) {
@@ -10,8 +14,8 @@ function NewIceCreamForm(props) {
     props.onNewIceCreamCreation({
       name: event.target.name.value,
       flavor: event.target.flavor.value,
-      price: parseInt(event.target.price.value),
-      scoops: Math.floor(parseFloat(event.target.iceCream.value) * 124),
+      price: parseFloat(event.target.price.value),
+      quantity: parseFloat(event.target.quantity.value),
       id: v4()
     })
   }
@@ -26,8 +30,5 @@ function NewIceCreamForm(props) {
   );
 }
 
-NewIceCreamForm.propTypes = {
-  onNewIceCreamCreation: PropTypes.func
-};
 
 export default NewIceCreamForm;
