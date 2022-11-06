@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import IceCreamList from './IceCreamList';
 import NewIceCreamForm from './NewIceCreamForm';
 import IceCreamDetail from './IceCreamDetail';
-
+import EditIceCreamForm from './EditIceCreamForm';
 class IceCreamControl extends React.Component {
   constructor(props) {
     super(props);
@@ -41,6 +41,7 @@ class IceCreamControl extends React.Component {
       selectedIceCream: selectedIceCream
     });
   }
+
 
   handleDecrementingScoopsSold = iceCreamId => {
     const newMainIceCreamList = this.state.mainIceCreamList.map((element) => {

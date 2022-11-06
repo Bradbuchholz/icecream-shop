@@ -6,22 +6,26 @@ IceCream.propTypes = {
   name: PropTypes.string,
   flavor: PropTypes.string,
   price: PropTypes.number,
-  scoops: PropTypes.number,
+  quantity: PropTypes.number,
   id: PropTypes.string,
-  whenScoopClicked: PropTypes.func,
-  whenDecrementingScoopClicked: PropTypes.func
+  whenIceCreamClicked: PropTypes.func,
+  whenScoopSold: PropTypes.func
 };
 
-function IceCream(props) {
+function IceCream(props){
   return (
     <React.Fragment>
-      <h3>{props.name}</h3>
-      <p>Flavor: {props.flavor}</p>
-      <p>Price: ${props.price}</p>
-      <p>Scoops: {props.scoops} Remaining</p>
-      <button onClick = {() => props.whenScoopClicked(props.id)}>IceCream Details</button>
-      <button onClick = {() => props.whenDecrementingScoopClicked(props.id)}>Sell Scoop</button>
-      <hr />
+      <div onClick = {()=> props.whenIceCreamClicked(props.id)}>
+        <h3>{props.name}</h3>
+        <p>Flavor: {props.flavor}</p>
+        <p>Containers On Hand: {props.quantity.toFixed(3)}</p>
+        <p>Price per Container: {props.price}</p>
+        <p>Scoops On Hand (130 scoops per container): {(130 * props.quantity).toFixed(0)}lb</p>
+      </div>
+      <div>
+        <button type="button" onClick = {()=> props.whenScoopSold(props.id)}>Consume 1 scoop</button>
+        <hr />
+      </div>
     </React.Fragment>
   );
 }
